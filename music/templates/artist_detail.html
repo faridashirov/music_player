@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="object-detail">
+
+    <!-- Верхняя часть: постер + информация -->
+    <div class="object-detail-header">
+        <div class="object-poster">
+            <img src="{{ artist.photo.url }}" alt="{{ artist.name }}">
+        </div>
+
+        <div class="object-info">
+            <h1>{{ artist.name }}</h1>
+
+        <div class="object-description">
+            <h2>Биография</h2>
+            <p>{{ artist.bio }}</p>
+        </div>
+            {% if user.is_superuser %}
+            <a style='margin-top: 20px' href="{% url "delete_artist" artist.slug %}" class="btn-secondary btn-delete">Удалить</a>
+            {% endif %}
+        </div>
+    </div>
+
+    
+    {% if songs %}
+    <div class="object-songs">
+        <h2>Песни исполнителя</h2>
+        <div class="song-cards">
+            {% for song in songs %}
+            <div class="song-card">
+                <img src="{{ song.get_cover }}" alt="{{ song.title }} обложка" class="album-cover">
+                <h2 class="song-title">{{ song.title }}</h2>
+                <p class="song-author">{{ song.artist.name }}</p>
+                <audio controls>
+                    <source src="{{ song.mp3_file.url }}" type="audio/mpeg">
+                    Ваш браузер не поддерживает аудио.
+                </audio>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <p>Песен пока нет.</p>
+    {% endif %}
+
+</div>
+{% endblock %} 
+

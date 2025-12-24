@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="objects-container">
+    {% for artist in artists %}
+        <div class="object-card">
+            <img src="{{ artist.photo.url }}" alt="{{ artist.name }}">
+
+            <h3>{{ artist.name }}</h3>
+
+            <p>
+                {{ artist.bio|truncatewords:10 }}
+            </p>
+
+            <a href="{% url 'artist_detail' artist.slug %}" class="btn">
+                Подробнее
+            </a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}

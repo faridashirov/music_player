@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Music</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="nav-container">
+        <!-- Левая часть: логотип и ссылки -->
+        <div class="nav-left">
+            <a href="{% url 'home' %}" class="logo">Music</a>
+            <nav class="nav-links">
+                <a href="{% url 'home' %}">Песни</a>
+                <a href="{% url 'artists' %}">Исполнители</a>
+            </nav>
+        </div>
+
+        <!-- Правая часть: кнопки -->
+        <div class="nav-right">
+            {% if user.is_authenticated %}
+                <a href="{% url "add_song" %}" class="nav-btn">+ Добавить песню</a>
+                <a href="{% url "add_artist" %}" class="nav-btn">+ Добавить исполнителя</a>
+                <a href="{% url "logout" %}" class="nav-btn logout-btn">Выйти</a>
+            {% else %}
+                <a href="{% url "login" %}" class="nav-btn">Войти</a>
+                <a href="{% url "signup" %}" class="nav-btn">Регистрация</a>
+            {% endif %}
+        </div>
+    </div>
+</header>
+
+
+
+<main class="content">
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer class="footer">
+    <p>© 2025 Music Project</p>
+</footer>
+
+</body>
+</html>
