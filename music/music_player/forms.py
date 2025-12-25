@@ -22,5 +22,4 @@ class ArtistForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-input'}),
             'bio': forms.Textarea(attrs={'class': 'form-input'}),
             'photo': forms.ClearableFileInput(attrs={'class': 'form-input'}),
-            'slug': forms.TextInput(attrs={'class': 'form-input'}),
         }
