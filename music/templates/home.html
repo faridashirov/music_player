@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Список песен</h1>
+<h1>List of songs</h1>
 
 <div class="song-cards">
     {% for song in songs %}
@@ -12,11 +12,11 @@
         <a class="song-author-link" href="{% url 'artist_detail' song.artist.slug %}"><p class="song-author">{{ song.artist.name }}</p></a>
         <audio controls>
             <source src="{{ song.mp3_file.url }}" type="audio/mpeg">
-            Ваш браузер не поддерживает аудио.
+            Your browser does not support the audio element.
         </audio>
     </div>
     {% empty %}
-    <p>Песен пока нет.</p>
+    <p>No songs available.</p>
     {% endfor %}
 </div>
 <script>

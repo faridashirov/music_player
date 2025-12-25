@@ -14,11 +14,11 @@
             <h1>{{ artist.name }}</h1>
 
         <div class="object-description">
-            <h2>Биография</h2>
+            <h2>Biography</h2>
             <p>{{ artist.bio }}</p>
         </div>
             {% if user.is_superuser %}
-            <a style='margin-top: 20px' href="{% url "delete_artist" artist.slug %}" class="btn-secondary btn-delete">Удалить</a>
+            <a style='margin-top: 20px' href="{% url "delete_artist" artist.slug %}" class="btn-secondary btn-delete">Delete</a>
             {% endif %}
         </div>
     </div>
@@ -26,7 +26,7 @@
     
     {% if songs %}
     <div class="object-songs">
-        <h2>Песни исполнителя</h2>
+        <h2>Songs by {{ artist.name }}</h2>
         <div class="song-cards">
             {% for song in songs %}
             <div class="song-card">
@@ -35,14 +35,14 @@
                 <p class="song-author">{{ song.artist.name }}</p>
                 <audio controls>
                     <source src="{{ song.mp3_file.url }}" type="audio/mpeg">
-                    Ваш браузер не поддерживает аудио.
+                    Your browser does not support the audio element.
                 </audio>
             </div>
             {% endfor %}
         </div>
     </div>
     {% else %}
-    <p>Песен пока нет.</p>
+    <p>No songs available.</p>
     {% endif %}
 
 </div>

@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="form-container">
-    <h2>Добавить исполнителя</h2>
+    <h2>Add New Artist</h2>
 
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -24,7 +24,7 @@
             </div>
         {% endfor %}
 
-        <button type="submit" class="submit-btn">Добавить исполнителя</button>
+        <button type="submit" class="submit-btn">Add Artist</button>
     </form>
 </div>
 {% endblock %}
