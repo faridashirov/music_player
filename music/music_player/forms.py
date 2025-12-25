@@ -16,7 +16,7 @@ class SongForm(forms.ModelForm):
 class ArtistForm(forms.ModelForm):
     class Meta:
         model = Artist
-        fields = ['name', 'bio', 'photo', 'slug']
+        fields = ['name', 'bio', 'photo']
 
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-input'}),

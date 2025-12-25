@@ -3,4 +3,9 @@ from . import models
 
 # Register your models here.
 admin.site.register(models.Song)
-admin.site.register(models.Artist)
+
+class ArtistAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug')
+    prepopulated_fields = {'slug': ('name',)}
+
+admin.site.register(models.Artist, ArtistAdmin)

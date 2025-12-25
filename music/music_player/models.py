@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
+from django.utils.text import slugify
 
 # Create your models here.
 class Song(models.Model):
@@ -23,6 +24,11 @@ class Artist(models.Model):
     bio = models.TextField()
     photo = models.ImageField(upload_to='media/artists/')
     slug = models.SlugField(unique=True)
+
+    def save(self, *args, **kwargs):  # new
+        if not self.slug:
+            self.slug = slugify(self.name.lower().replace(' ', '-'))
+        return super().save(*args, **kwargs)
     
     def __str__(self):
         return self.name
