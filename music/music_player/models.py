@@ -25,9 +25,9 @@ class Artist(models.Model):
     photo = models.ImageField(upload_to='media/artists/')
     slug = models.SlugField(unique=True)
 
-    def save(self, *args, **kwargs):  # new
+    def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.name.lower().replace(' ', '-'))
+            self.slug = slugify(self.name)
         return super().save(*args, **kwargs)
     
     def __str__(self):
