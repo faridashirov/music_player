@@ -25,6 +25,7 @@ A Django-based CRUD web application for uploading and listening to music tracks.
 
 ### Installation
 
+```bash
 git clone https://github.com/faridashirov/music_player.git
 cd music_player
 
@@ -35,19 +36,24 @@ pip install -r requirements.txt
 
 python manage.py migrate
 python manage.py runserver
+```
 
 Open `http://127.0.0.1:8000` in your browser.
 
 ## Dependencies
 
+```
 asgiref==3.11.0
 Django==6.0
 pillow==12.0.0
 sqlparse==0.5.5
+```
 
 ## Project Structure
 
+```
 music_player/
 ├── music/          # Main app (models, views, urls, templates)
 ├── requirements.txt
 └── .gitignore
+```
